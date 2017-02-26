@@ -8,34 +8,34 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 
-import { Hero } from "./hero";
-import { HeroService } from './hero.service';
+import { Artwork } from "./artwork";
+import { ArtworkService } from './artwork.service';
 
 
 @Component({
   moduleId: module.id,
-  selector: 'my-hero-detail',
-  templateUrl: './hero-detail.component.html',
-  styleUrls: [ './hero-detail.component.css' ]
+  selector: 'my-artwork-detail',
+  templateUrl: 'artwork-detail.component.html',
+  styleUrls: [ 'artwork-detail.component.css' ]
 })
 
-export class HeroDetailComponent implements OnInit{
-  hero: Hero;
+export class ArtworkDetailComponent implements OnInit{
+  artwork: Artwork;
 
   constructor(
-    private heroService: HeroService,
+    private artworkService: ArtworkService,
     private route: ActivatedRoute,
     private location: Location
   ) {}
 
   ngOnInit(): void {
     this.route.params
-      .switchMap((params: Params) => this.heroService.getHero(+params['id']))
-      .subscribe(hero => this.hero = hero);
+      .switchMap((params: Params) => this.artworkService.getArtwork(+params['id']))
+      .subscribe(artwork => this.artwork = artwork);
   }
 
   save(): void {
-    this.heroService.update(this.hero)
+    this.artworkService.update(this.artwork)
       .then(() => this.goBack());
   }
 

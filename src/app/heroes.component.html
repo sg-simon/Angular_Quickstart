@@ -1,23 +1,23 @@
-<h2>Family Members</h2>
+<h2>List of Artworks</h2>
 <div>
-  <label>Name:</label> <input #heroName />
-  <button (click)="add(heroName.value); heroName.value=''">
+  <label>Name:</label> <input #artworkName />
+  <button (click)="add(artworkName.value); artworkName.value=''">
     Add
   </button>
 </div>
-<ul class="heroes">
-  <li *ngFor="let hero of heroes"
-      [class.selected]="hero === selectedHero"
-      (click)="onSelect(hero)">
-    <span class="badge">{{hero.id}}</span>
-    <span> {{hero.name}} </span>
+<ul class="artworks">
+  <li *ngFor="let artwork of artworks"
+      [class.selected]="artwork === selectedArtwork"
+      (click)="onSelect(artwork)">
+    <span class="badge">{{artwork.id}}</span>
+    <span> {{artwork.name}} </span>
     <button class="delete"
-            (click)="delete(hero); $event.stopPropagation()">x</button>
+            (click)="delete(artwork); $event.stopPropagation()">x</button>
   </li>
 </ul>
-<div *ngIf="selectedHero">
+<div *ngIf="selectedArtwork">
   <h2>
-    {{selectedHero.name | uppercase}} is selected
+    {{selectedArtwork.name | uppercase}} is selected
   </h2>
   <button (click)="gotoDetail()">View Details</button>
 </div>
